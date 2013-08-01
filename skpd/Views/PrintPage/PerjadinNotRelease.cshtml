@@ -1,0 +1,19 @@
+﻿@model skpd.Models.vwRequest
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print</title>
+</head>
+<body>
+    <a href="@Url.Action("Lacak","Pengajuan")">
+        <img alt="Kembali" src="@Url.Content("~/Metro/images/misc/left_round.png")" title="Kembali"/>
+    </a>
+    <div style="text-align:center">Request Not Yet Release</div>
+</body>
+</html>

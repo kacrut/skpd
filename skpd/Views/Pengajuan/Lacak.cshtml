@@ -1,0 +1,91 @@
+﻿@model PagedList<skpd.Models.vwRequest>
+@{
+    ViewBag.Title = ViewBag.Message;
+}
+
+<h2>Lacak Pengajuan</h2>
+@using (Html.BeginForm())
+{
+    <div class="input-control text span5">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter search event name..." })
+        <button class="btn-search bg-color-blue"></button>
+    </div>    
+}
+<table class="bordered hovered">
+    <thead>
+        <tr class="bg-color-blueLight">
+            <th class="text-center">Asal - Tujuan</th>
+            <th class="text-center">Kegiatan</th>
+            <th class="text-center">Tgl. Pengajuan</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        int[] Print = new int[] { 7,8 };
+        if (!Print.Contains(item.FlagID))
+        {
+            <tr class="row bg-color-orangeDark">
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromCountryName) - <br />@Html.DisplayFor(modelItem => item.ToCountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+            
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    <a href="@Url.Action("Print", "PrintPage", new { id = item.RequestID })">
+                        <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/pdf.png")" title="Print" />
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Tracking", new { id = item.RequestID })">
+                        <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/detective.png")" title="Tracking" /> 
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.RequestID })">
+                        <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/right_round.png")" title="Details" />
+                    </a>
+                </td>
+            </tr>
+        }
+        else
+        {
+         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromCountryName) - <br />@Html.DisplayFor(modelItem => item.ToCountryName)            
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <a href="@Url.Action("Print", "PrintPage", new { id = item.RequestID })">
+                    <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/pdf.png")" title="Print" />
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("Tracking", new { id = item.RequestID })">
+                    <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/detective.png")" title="Tracking" /> 
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("Details", new { id = item.RequestID })">
+                    <img alt="searchPage" src="@Url.Content("~/Metro/images/misc/right_round.png")" title="Details" />
+                </a>
+            </td>
+        </tr>   
+        }
+    }
+    </tbody>
+</table>
+<small class="place-right">Total Count: @Model.TotalCount</small>
+<small class="place-right">Total Pages: @Model.TotalPages,</small>
+@Html.PagerForPagedList(Model.PageIndex, Model, "Lacak", "Pengajuan", new { currentFilter = ViewBag.CurrentFilter }, new object { }, 3, "Prev", "Next")

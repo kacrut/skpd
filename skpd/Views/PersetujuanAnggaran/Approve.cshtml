@@ -1,0 +1,37 @@
+﻿@model skpd.Models.RequestInProgram
+@{
+    ViewBag.Title = "Approve";
+}
+<a href="@Url.Action("Index")">
+    <img alt="Kembali" src="@Url.Content("~/Metro/images/misc/left_round.png")" title="Kembali"/>
+</a>
+<h2>Pergunaan Anggaran</h2>
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<div>
+    @Html.ValidationSummary(true, "Gagal. Silahkan perbaiki error dibawah ini :")
+</div>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend></legend>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.RequestID, "Request ID")
+        </div>
+        <div class="input-control text">
+            @Html.TextBoxFor(m => m.RequestID, new { @readonly = true })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.ProgramID, "Budget Name")
+        </div>
+        <div class="input-control text">
+            @Html.DropDownList("ProgramID", "[Pilih]")
+            @Html.ValidationMessageFor(model => model.ProgramID)
+        </div>
+        <div style="text-align: center">
+            <input type="submit" value="Selesai" />
+        </div>
+    </fieldset>
+}
+<div id="ajaxLoader" style="display: none">
+</div>

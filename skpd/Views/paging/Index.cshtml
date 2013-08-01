@@ -1,0 +1,34 @@
+﻿@*@model PagedList<SampleData.Person>*@
+@model PagedList<skpd.Models.Position>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+@using (Html.BeginForm())
+{
+    <div class="input-control text span5">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder="Enter search position name..." })
+        <button class="btn-search bg-color-green"></button>
+    </div>    
+}
+<table class="bordered">
+    <thead>
+        <tr>
+            <th class="text-center">PositionID</th>
+            <th class="text-center">PositionName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+            <td>@item.PositionID</td>
+            <td>@item.PositionName</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<small class="place-right">Total Count: @Model.TotalCount</small>
+<small class="place-right">Total Pages: @Model.TotalPages,</small>
+@Html.PagerForPagedList(Model.PageIndex, Model, "Index", "paging", new { currentFilter = ViewBag.CurrentFilter }, new object { }, 3, "Prev", "Next")

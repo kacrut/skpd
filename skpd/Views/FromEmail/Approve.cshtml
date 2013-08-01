@@ -1,0 +1,54 @@
+﻿@model skpd.Models.vwRequest
+@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Views/Shared/_LayoutEmail.cshtml";
+}
+<h2>Persetujuan SKPD Dari Email</h2>
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@Html.ValidationSummary(true, "Gagal Proses")
+@using (Html.BeginForm())
+{
+    <table class="bordered">
+        <thead>
+        </thead>
+        <tbody>
+            <tr><td class="span1 left">No. Perjadin:</td><td>@Html.DisplayFor(model => model.RequestID)</td></tr>
+            <tr><td class="span1 left">Nama</td><td class="uppercase">@Html.DisplayFor(model => model.Name)</td></tr>
+            <tr><td class="span1 left">Posisi</td><td>@Html.DisplayFor(model => model.PositionName)</td></tr>
+            <tr><td class="span1 left">Divisi</td><td>@Html.DisplayFor(model => model.DivisionName)</td></tr>
+            <tr><td class="span1 left">Kantor</td><td>@Html.DisplayFor(model => model.PositionCountryName)</td></tr>
+            <tr><td class="span1 left">Kegiatan</td><td>@Html.DisplayFor(model => model.EventName)</td></tr>
+            <tr><td class="span1 left">Perjalanan</td><td>@Html.DisplayFor(model => model.FromCountryName) - @Html.DisplayFor(model => model.ToCountryName)</td></tr>
+            <tr><td class="span1 left">Tanggal</td><td>@Html.DisplayFor(model => model.StartDate) - @Html.DisplayFor(model => model.EndDate)</td></tr>
+            <tr><td>Transportasi</td>
+                <td class="left">
+                    <ul>
+                         @{
+                            using (skpd.Models.ESKAPEDEContext db = new skpd.Models.ESKAPEDEContext())
+                            {
+                                IEnumerable<skpd.Models.RequestInTransport> x = db.RequestInTransports.Include("Transport").Where(a => a.RequestID == Model.RequestID);
+                                foreach (var o in x)
+                                {
+                                    {
+                                        <li>
+                                            @Html.DisplayFor(modelItem => o.Transport.TransportName)
+                                        </li>
+                                    }
+                                }
+                            }
+                            }
+                    </ul>
+                </td>
+            </tr>
+            <tr><td class="span1 left">Beban Anggaran</td><td>@Html.DisplayFor(model => model.ProgramName)</td></tr>
+        </tbody>
+    </table>
+    <div style="display: none;">
+        @Html.TextBoxFor(m => m.RequestID, new { @readonly = true })
+        @Html.TextBoxFor(m => m.ApprovalPositionID, new { @readonly = true })
+    </div>
+    <p>
+        <input type="submit" value="Setuju" />
+    </p>
+}

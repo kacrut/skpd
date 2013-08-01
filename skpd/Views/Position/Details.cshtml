@@ -1,0 +1,30 @@
+﻿@model skpd.Models.Position
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Position</legend>
+
+    <div class="display-label">PositionName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionName)
+    </div>
+
+    <div class="display-label">Division</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Division.DivisionName)
+    </div>
+
+    <div class="display-label">Position3</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Position3.PositionName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PositionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

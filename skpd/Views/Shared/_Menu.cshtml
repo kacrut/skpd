@@ -1,0 +1,119 @@
+﻿<div class="nav-bar">
+    <div class="nav-bar-inner padding10">
+        <span class="pull-menu"></span>
+
+        <a href="/">
+        <span class="element brand">e-SKPD <small>Versi 1.0.0</small></span>
+        </a>
+
+        <div class="divider"></div>
+        @if (Request.IsAuthenticated)
+        {
+            <ul class="menu">
+                @{
+            //string positionName;
+            //using (var db = Database.Open("ESKAPEDEContext"))
+            //{
+            //    string querypositionName = String.Format("select PositionNamem from organization.Position a " +
+            //                                "inner join [User] b on a.PositionID=b.PositionID " +
+            //                                "where b.Username='{0}'", User.Identity.Name);
+            //    var queryUnitID = db.user
+            //    positionName = db.QueryValue(query);
+            //}
+            //int positionName;
+            //int DivisionID;
+            skpd.Models.vwUserProfile vwuserprofile = null;
+            int[] Staff = null;
+            int[] Manager = null;
+            using (var db = new skpd.Models.ESKAPEDEContext())
+            {
+                //positionName = db.vwUserProfiles.Where(a => a.Username == User.Identity.Name).Select(a => a.PositionTypeID).FirstOrDefault();
+                //DivisionID = db.Users.Where(a => a.Username == User.Identity.Name).Select(a => a.Position.Unit.DivisionID).FirstOrDefault();
+                vwuserprofile = db.vwUserProfiles.Where(a => a.Username == User.Identity.Name).FirstOrDefault();
+                Staff= new int[] {7,8,9,10};
+                Manager = new int[] { 5,6,11 };
+            }
+                }
+
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                
+                @if (vwuserprofile.UnitID == 28)//ADMINISTRASI SDM 
+                {
+                    <li data-role="dropdown"><a href="#">Pengajuan</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Baru", "Index", "Pengajuan")</li>
+                            <li>@Html.ActionLink("Cetak & Lacak", "Lacak", "Pengajuan")</li>
+                        </ul>
+                    </li>
+                    <li data-role="dropdown"><a href="#">Persetujuan</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Release", "Index", "Release")</li>
+               @*             <li>@Html.ActionLink("ReportRelease", "Index", "ReportRelease")</li>*@
+                        </ul>
+                    </li>
+                    <li data-role="dropdown"><a href="#">Laporan</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Laporan", "Index", "Laporan")</li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    if (vwuserprofile.LevelPositionID == 1)//DIREKRUT
+                    {
+                        <li data-role="dropdown"><a href="#">Persetujuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Pengajuan", "Index", "Persetujuan")</li>
+                            </ul>
+                        </li>
+                    }
+                    if (vwuserprofile.PositionTypeID == 3 || vwuserprofile.PositionTypeID == 12)//KADIV || NON KADIV
+                     {
+                         <li data-role="dropdown"><a href="#">Pengajuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Baru", "Index", "Pengajuan")</li>
+                                <li>@Html.ActionLink("Cetak & Lacak", "Lacak", "Pengajuan")</li>
+                            </ul>
+                        </li>
+                        <li data-role="dropdown"><a href="#">Persetujuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Pengajuan", "Index", "Persetujuan")</li>
+                                <li>@Html.ActionLink("Anggaran", "Index", "PersetujuanAnggaran")</li>
+                            </ul>
+                        </li>
+                     }
+                     if (Staff.Contains(vwuserprofile.PositionTypeID) && vwuserprofile.UnitID != 28)//!=
+                     {
+                         <li data-role="dropdown"><a href="#">Pengajuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Baru", "Index", "Pengajuan")</li>
+                                <li>@Html.ActionLink("Cetak & Lacak", "Lacak", "Pengajuan")</li>
+                            </ul>
+                        </li>
+                     }
+                     if (Manager.Contains(vwuserprofile.PositionTypeID))//!=
+                     {
+                         <li data-role="dropdown"><a href="#">Pengajuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Baru", "Index", "Pengajuan")</li>
+                                <li>@Html.ActionLink("Cetak & Lacak", "Lacak", "Pengajuan")</li>
+                            </ul>
+                        </li>
+                        <li data-role="dropdown"><a href="#">Persetujuan</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Pengajuan", "Index", "Persetujuan")</li>
+                            </ul>
+                        </li>
+                     }
+                }
+            </ul>
+        }
+        else
+        {
+            <ul class="menu">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            </ul>
+        }
+    </div>
+</div>
+

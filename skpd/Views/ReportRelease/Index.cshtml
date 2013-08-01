@@ -1,0 +1,323 @@
+﻿@model IEnumerable<skpd.Models.RequestRelease>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="bordered">
+<thead>
+    <tr class="bg-color-blueLight">
+        <th>
+            @Html.DisplayNameFor(model => model.RequestID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionCountryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionCountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelPositionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelPositionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rekening)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Npwp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToCountryAreaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToCountryAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToRegionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToRegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToCountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromCountryAreaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromCountryAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromRegionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromRegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromCountryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromCountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrencyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExchangeRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExchangeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CashStayOrCashNotStay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CashPerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCashPerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlagID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlagCreatedDate)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+ <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionCountryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionCountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelPositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelPositionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rekening)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NIK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Npwp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alamat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToCountryAreaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToCountryAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToRegionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToRegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToCountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCountryAreaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCountryAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromRegionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromRegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCountryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Days)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrencyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExchangeRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExchangeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CashStayOrCashNotStay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CashPerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCashPerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgramID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgramName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagCreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+</tbody>
+</table>

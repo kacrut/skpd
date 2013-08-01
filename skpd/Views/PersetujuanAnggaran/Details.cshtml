@@ -1,0 +1,56 @@
+﻿@model skpd.Models.vwRequest
+@{
+    ViewBag.Title = "Approve";
+}
+<a href="@Url.Action("Index")">
+    <img alt="Kembali" src="@Url.Content("~/Metro/images/misc/left_round.png")" title="Kembali"/>
+</a>
+<h2>Details</h2>
+<table class="bordered">
+    <thead>
+    </thead>
+<tbody>
+        <tr><td class="span3 left">ID</td><td>@Html.DisplayFor(model => model.RequestID)</td></tr>
+        <tr><td>Pengaju</td><td class="uppercase">@Html.DisplayFor(model => model.Name)</td></tr>
+        <tr><td>Lokasi</td><td class="uppercase">@Html.DisplayFor(model => model.PositionCountryName)</td></tr>
+        <tr><td>Posisi</td><td>@Html.DisplayFor(model => model.PositionName)</td></tr>
+        <tr><td>Unit</td><td>@Html.DisplayFor(model => model.UnitName)</td></tr>
+        <tr><td>Divisi</td><td>@Html.DisplayFor(model => model.DivisionName)</td></tr>
+        <tr><td>Kegiatan</td><td>@Html.DisplayFor(model => model.EventName)</td></tr>
+        <tr><td>Perjalanan</td><td>@Html.DisplayFor(model => model.FromCountryName) - @Html.DisplayFor(model => model.ToCountryName)</td></tr>
+        <tr><td>Tanggal</td><td>@Html.DisplayFor(model => model.StartDate) - @Html.DisplayFor(model => model.EndDate)</td></tr>
+        <tr><td>Lama dinas</td><td>@Html.DisplayFor(model => model.Days) Hari</td></tr>
+        <tr><td>Transportasi</td>
+            <td class="left">
+                <ul>
+                     @{
+                        using (skpd.Models.ESKAPEDEContext db = new skpd.Models.ESKAPEDEContext())
+                        {
+                            IEnumerable<skpd.Models.RequestInTransport> x = db.RequestInTransports.Include("Transport").Where(a => a.RequestID == Model.RequestID);
+                            int i = 1;
+                                int count = x.Count();
+                                
+                                foreach (var item in x)
+                                {
+                                    
+                                    i++;
+                                    if(count > i)
+                                    {
+                                        <li>
+                                            @Html.DisplayFor(modelItem => item.Transport.TransportName), &nbsp;
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            @Html.DisplayFor(modelItem => item.Transport.TransportName)
+                                        </li>
+                                    }
+                                }
+                        }
+                        }
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

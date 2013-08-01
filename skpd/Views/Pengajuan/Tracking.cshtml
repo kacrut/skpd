@@ -1,0 +1,37 @@
+﻿@model IEnumerable<skpd.Models.RequestLog>
+@{
+    ViewBag.Title = "Hasil Pelacakan";
+}
+
+<h2>Hasil Pelacakan</h2>
+<a href="@Url.Action("Lacak")">
+    <img alt="Setuju" src="@Url.Content("~/Metro/images/misc/left_round.png")" title="Kembali" />
+</a>
+<table class="bordered">
+<thead>
+    <tr class="bg-color-blueLight">
+        <th class="text-center">Status</th>
+        <th class="text-center">Alasan</th>
+        <th class="text-center">Tujuan Persetujuan</th>
+        <th class="text-center">Tgl. Status</th>
+    </tr>
+</thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flag.FlagName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RejectedReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position1.PositionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagCreatedDate)
+        </td>
+    </tr>
+}
+
+</table>

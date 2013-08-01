@@ -1,0 +1,80 @@
+﻿@model IEnumerable<skpd.Models.ReportRequest>
+@{
+    ViewBag.Title = "Report";
+    Layout = null;
+}
+<link href="../../Metro/css/onepixelborder.css" rel="stylesheet" type="text/css" />
+
+<h2>report</h2>
+<table class="gridtable">
+    <thead>
+        <tr>
+            <th>NO. SKPD</th>
+            <th>NAMA PEGAWAI</th>
+            <th>JABATAN</th>
+            <th>BAGIAN</th>
+            <th>REKENING</th>
+            <th>EMAIL</th>
+            <th>NIK</th>
+            <th>NPWP</th>
+            <th>ALAMAT</th>
+            <th>AREA ASAL</th>
+            <th>NEGARA ASAL</th>
+            <th>LOKASI ASAL</th>
+            <th>AREA TUJUAN</th>
+            <th>NEGARA TUJUAN</th>
+            <th>LOKASI TUJUAN</th>
+            <th>TGL. PERGI</th>
+            <th>TGL. PULANG</th>
+            <th>HARI</th>
+            <th>MATA UANG</th>
+            <th>KURS</th>
+            <th>TGL. KURS</th>
+            <th>BERMALAM?</th>
+            <th>UANG HARIAN</th>
+            <th>KONVERSI UANG HARIAN</th>
+            <th>TOTAL UANG HARIAN</th>
+            <th>KODE MATA ANGGARAN</th>
+            <th>NAMA MATA ANGGARAN</th>
+            <th>TGL PENGAJUAN</th>
+            <th>TGL SKPD</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.NO__SKPD)</td>
+            <td>@Html.DisplayFor(modelItem => item.NAMA_PEGAWAI)</td>
+            <td>@Html.DisplayFor(modelItem => item.JABATAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.BAGIAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.REKENING)</td>
+            <td>@Html.DisplayFor(modelItem => item.EMAIL)</td>
+            <td>@Html.DisplayFor(modelItem => item.NIK)</td>
+            <td>@Html.DisplayFor(modelItem => item.NPWP)</td>
+            <td>@Html.DisplayFor(modelItem => item.ALAMAT)</td>
+            <td>@Html.DisplayFor(modelItem => item.AREA_ASAL)</td>
+            <td>@Html.DisplayFor(modelItem => item.NEGARA_ASAL)</td>
+            <td>@Html.DisplayFor(modelItem => item.LOKASI_ASAL)</td>
+            <td>@Html.DisplayFor(modelItem => item.AREA_TUJUAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.NEGARA_TUJUAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.LOKASI_TUJUAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.TGL__PERGI)</td>
+            <td>@Html.DisplayFor(modelItem => item.TGL__PULANG)</td>
+            <td>@Html.DisplayFor(modelItem => item.HARI)</td>
+            <td>@Html.DisplayFor(modelItem => item.MATA_UANG)</td>
+            <td>@Html.DisplayFor(modelItem => item.KURS)</td>
+            <td>@Html.DisplayFor(modelItem => item.TGL__KURS)</td>
+            <td>@Html.DisplayFor(modelItem => item.BERMALAM_)</td>
+            <td>@Html.DisplayFor(modelItem => item.UANG_HARIAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.KONVERSI_UANG_HARIAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.TOTAL_UANG_HARIAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.KODE_MATA_ANGGARAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.NAMA_MATA_ANGGARAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.TGL_PENGAJUAN)</td>
+            <td>@Html.DisplayFor(modelItem => item.TGL_SKPD)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+</small>

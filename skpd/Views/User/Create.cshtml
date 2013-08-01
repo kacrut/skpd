@@ -1,0 +1,99 @@
+﻿@model skpd.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NIK)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NIK)
+            @Html.ValidationMessageFor(model => model.NIK)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rekening)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rekening)
+            @Html.ValidationMessageFor(model => model.Rekening)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionID, "Position")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PositionID", String.Empty)
+            @Html.ValidationMessageFor(model => model.PositionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Npwp)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Npwp)
+            @Html.ValidationMessageFor(model => model.Npwp)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Alamat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Alamat)
+            @Html.ValidationMessageFor(model => model.Alamat)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

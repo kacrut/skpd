@@ -1,0 +1,415 @@
+﻿@model skpd.Models.RequestRelease
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<div class="bg-color-blueLight">
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RequestRelease</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequestID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.RequestID)
+            @Html.ValidationMessageFor(model => model.RequestID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.UserID)
+            @Html.ValidationMessageFor(model => model.UserID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionCountryID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionCountryID)
+            @Html.ValidationMessageFor(model => model.PositionCountryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionCountryName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionCountryName)
+            @Html.ValidationMessageFor(model => model.PositionCountryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionTypeID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionTypeID)
+            @Html.ValidationMessageFor(model => model.PositionTypeID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionTypeName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionTypeName)
+            @Html.ValidationMessageFor(model => model.PositionTypeName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LevelPositionID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.LevelPositionID)
+            @Html.ValidationMessageFor(model => model.LevelPositionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LevelPositionName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.LevelPositionName)
+            @Html.ValidationMessageFor(model => model.LevelPositionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionID)
+            @Html.ValidationMessageFor(model => model.PositionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.PositionName)
+            @Html.ValidationMessageFor(model => model.PositionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.UnitID)
+            @Html.ValidationMessageFor(model => model.UnitID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.UnitName)
+            @Html.ValidationMessageFor(model => model.UnitName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DivisionID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.DivisionID)
+            @Html.ValidationMessageFor(model => model.DivisionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DivisionName)
+        </div>
+       <div class="input-control">
+            @Html.EditorFor(model => model.DivisionName)
+            @Html.ValidationMessageFor(model => model.DivisionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rekening)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Rekening)
+            @Html.ValidationMessageFor(model => model.Rekening)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NIK)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.NIK)
+            @Html.ValidationMessageFor(model => model.NIK)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Npwp)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Npwp)
+            @Html.ValidationMessageFor(model => model.Npwp)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Alamat)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Alamat)
+            @Html.ValidationMessageFor(model => model.Alamat)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToCountryAreaID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ToCountryAreaID)
+            @Html.ValidationMessageFor(model => model.ToCountryAreaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToCountryAreaName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ToCountryAreaName)
+            @Html.ValidationMessageFor(model => model.ToCountryAreaName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToRegionID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ToRegionID)
+            @Html.ValidationMessageFor(model => model.ToRegionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToRegionName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ToRegionName)
+            @Html.ValidationMessageFor(model => model.ToRegionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CountryID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.CountryID)
+            @Html.ValidationMessageFor(model => model.CountryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToCountryName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ToCountryName)
+            @Html.ValidationMessageFor(model => model.ToCountryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCountryAreaID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.FromCountryAreaID)
+            @Html.ValidationMessageFor(model => model.FromCountryAreaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCountryAreaName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.FromCountryAreaName)
+            @Html.ValidationMessageFor(model => model.FromCountryAreaName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromRegionID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.FromRegionID)
+            @Html.ValidationMessageFor(model => model.FromRegionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromRegionName)
+        </div>
+       <div class="input-control">
+            @Html.EditorFor(model => model.FromRegionName)
+            @Html.ValidationMessageFor(model => model.FromRegionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCountryID)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.FromCountryID)
+            @Html.ValidationMessageFor(model => model.FromCountryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCountryName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.FromCountryName)
+            @Html.ValidationMessageFor(model => model.FromCountryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.EventName)
+            @Html.ValidationMessageFor(model => model.EventName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Days)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.Days)
+            @Html.ValidationMessageFor(model => model.Days)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CurrencyName)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.CurrencyName)
+            @Html.ValidationMessageFor(model => model.CurrencyName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExchangeRate)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ExchangeRate)
+            @Html.ValidationMessageFor(model => model.ExchangeRate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExchangeDate)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.ExchangeDate)
+            @Html.ValidationMessageFor(model => model.ExchangeDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CashStayOrCashNotStay)
+        </div>
+        <div class="input-control">
+            @Html.EditorFor(model => model.CashStayOrCashNotStay)
+            @Html.ValidationMessageFor(model => model.CashStayOrCashNotStay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CashPerDay)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.CashPerDay)
+            @Html.ValidationMessageFor(model => model.CashPerDay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConvertCashPerDay)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.ConvertCashPerDay)
+            @Html.ValidationMessageFor(model => model.ConvertCashPerDay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalCash)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.TotalCash)
+            @Html.ValidationMessageFor(model => model.TotalCash)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProgramID)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.ProgramID)
+            @Html.ValidationMessageFor(model => model.ProgramID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProgramName)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.ProgramName)
+            @Html.ValidationMessageFor(model => model.ProgramName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedDate)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.CreatedDate)
+            @Html.ValidationMessageFor(model => model.CreatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FlagID)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.FlagID)
+            @Html.ValidationMessageFor(model => model.FlagID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FlagCreatedDate)
+        </div>
+         <div class="input-control">
+            @Html.EditorFor(model => model.FlagCreatedDate)
+            @Html.ValidationMessageFor(model => model.FlagCreatedDate)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

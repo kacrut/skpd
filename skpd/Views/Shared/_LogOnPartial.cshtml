@@ -1,0 +1,20 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="user-login">
+                @*<a href="#">
+                   <div class="name">
+                        <span class="first-name">Hi! <strong><font color="orange">@System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name) (@Html.ActionLink("Log Off", "LogOff", "Account"))</font></strong></span>
+                        @*<span class="last-name"><font color="orange">@Html.ActionLink("Log Off", "LogOff", "Account")</font></span>
+                    </div>
+                    <div class="avatar">
+                        <img src=@Url.Content("~/Metro/images/myface.jpg")>
+                    </div>
+                </a>*@
+                <span class="last-name">Hi! <strong><font color="orange">@System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name) [@Html.ActionLink("Log Off", "LogOff", "Account")]</font></strong></span>
+            </div>
+            @*<h1>In<font color="orange">Health</font></h1>*@
+        </div>
+    </div>
+}

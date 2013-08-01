@@ -1,0 +1,45 @@
+﻿@model IEnumerable<skpd.Models.Position>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            PositionName
+        </th>
+        <th>
+            Division
+        </th>
+        <th>
+            Position3
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division.DivisionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position2.PositionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PositionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PositionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PositionID })
+        </td>
+    </tr>
+}
+
+</table>

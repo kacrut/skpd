@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<h2>@ViewBag.Message</h2>*@
+@if (Request.IsAuthenticated)
+{
+    <div class="tiles clearfix">
+        <div class="tile image">
+            <div class="tile-content">
+               <img src=@Url.Content(@ViewBag.FaceUrl) />
+            </div>
+        </div>
+        <div class="tile double bg-color-orangeDark">
+            <div class="tile-content">
+                @*<img src=@Url.Content(@ViewBag.FaceUrl) class="place-left" />*@
+                <h4 style="margin-bottom: 5px;">@ViewBag.fullname</h4>
+                <p>
+                    @ViewBag.PositionName<br />
+                    @ViewBag.UnitName<br />
+                    @ViewBag.CountryName<br />
+                    <small>>> @ViewBag.Assign</small>
+                </p>
+            </div>
+            <div class="brand">
+                <span class="name">@ViewBag.Email</span>
+            </div>
+        </div>
+    </div>
+    @*if (Roles.IsUserInRole("STAFF"))
+    {
+           <span>admin</span>
+    }
+    else
+    {
+        <span>not admin</span>
+    }*@
+
+}
+else
+{
+    <div class="tile double bg-color-orangeDark"  data-role="tile-slider" data-param-period="3000">
+        <div class="tile-content text-center">
+            <h2>Aplikasi e-SKPD</h2>
+        </div>
+        <div class="tile-content text-center">
+            <h2>Versi 1.00</h2>
+        </div>
+        <div class="tile-content">
+            <h2>Silahkan Login Untuk memulai pengajuan</h2>
+        </div>
+
+        <div class="brand bg-color-green">
+            <span class="name buttom-left">        
+                <a href="@Url.Action("logon", "account")">
+                    Login
+                </a>
+            </span>
+        </div>
+    </div>
+    @*<h2>Aplikasi e-SKPD.</h2>
+    <p> Silahkan <a href=@Url.Action("LogOn", "Account")>Login</a> Untuk memulai pengajuan</p>*@
+}

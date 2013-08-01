@@ -1,0 +1,20 @@
+﻿@model skpd.Models.Transport
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Transport</legend>
+
+    <div class="display-label">TransportName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TransportName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TransportID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

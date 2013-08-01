@@ -1,0 +1,358 @@
+﻿@model skpd.Models.RequestRelease
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RequestRelease</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RequestID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RequestID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionCountryID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionCountryID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionCountryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionCountryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionTypeID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionTypeID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LevelPositionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LevelPositionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LevelPositionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LevelPositionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PositionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UnitID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UnitName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DivisionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DivisionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DivisionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DivisionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rekening)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rekening)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NIK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NIK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Npwp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Npwp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Alamat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Alamat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToCountryAreaID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToCountryAreaID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToCountryAreaName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToCountryAreaName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToRegionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToRegionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToRegionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToRegionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CountryID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CountryID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToCountryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToCountryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromCountryAreaID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromCountryAreaID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromCountryAreaName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromCountryAreaName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromRegionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromRegionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromRegionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromRegionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromCountryID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromCountryID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromCountryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromCountryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Days)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Days)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CurrencyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrencyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExchangeRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExchangeRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExchangeDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExchangeDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CashStayOrCashNotStay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CashStayOrCashNotStay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CashPerDay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CashPerDay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ConvertCashPerDay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConvertCashPerDay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TotalCash)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalCash)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProgramID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProgramID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProgramName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProgramName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlagID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlagCreatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagCreatedDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

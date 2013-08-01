@@ -1,0 +1,99 @@
+﻿@model IEnumerable<skpd.Models.Request>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            StartDate
+        </th>
+        <th>
+            EndDate
+        </th>
+        <th>
+            Destination
+        </th>
+        <th>
+            EventName
+        </th>
+        <th>
+            PositionID
+        </th>
+        <th>
+            CreatedBy
+        </th>
+        <th>
+            CreatedDate
+        </th>
+        <th>
+            Flag
+        </th>
+        <th>
+            ApprovedDate
+        </th>
+        <th>
+            ApprovalPositionID
+        </th>
+        <th>
+            RejectedDate
+        </th>
+        <th>
+            RejectedReason
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalPositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RejectedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RejectedReason)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RequestID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RequestID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RequestID })
+        </td>
+    </tr>
+}
+
+</table>

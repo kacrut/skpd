@@ -1,0 +1,75 @@
+﻿@model skpd.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Request</legend>
+
+    <div class="display-label">StartDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">EndDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">Destination</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+
+    <div class="display-label">EventName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventName)
+    </div>
+
+    <div class="display-label">PositionID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PositionID)
+    </div>
+
+    <div class="display-label">CreatedBy</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">CreatedDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDate)
+    </div>
+
+    <div class="display-label">Flag</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flag)
+    </div>
+
+    <div class="display-label">ApprovedDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApprovedDate)
+    </div>
+
+    <div class="display-label">ApprovalPositionID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApprovalPositionID)
+    </div>
+
+    <div class="display-label">RejectedDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RejectedDate)
+    </div>
+
+    <div class="display-label">RejectedReason</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RejectedReason)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RequestID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

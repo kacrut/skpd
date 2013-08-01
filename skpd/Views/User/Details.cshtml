@@ -1,0 +1,78 @@
+﻿@model skpd.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NIK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NIK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rekening)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rekening)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Position.PositionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Position.PositionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Npwp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Npwp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Alamat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Alamat)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

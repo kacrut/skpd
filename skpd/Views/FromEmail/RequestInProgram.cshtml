@@ -1,0 +1,138 @@
+﻿@model skpd.DTO.RequestInProgramDTO
+@{
+    ViewBag.Title = "RequestInProgram"; 
+    Layout = "~/Views/Shared/_LayoutEmail.cshtml";
+}
+<h2>Penbebanan Anggaran</h2>
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@Html.ValidationSummary(true, "Gagal. Silahkan perbaiki error dibawah ini :")
+@using (Html.BeginForm())
+{
+    <fieldset>
+            <legend></legend>
+            <div class="editor-label">
+                @Html.LabelFor(m => m.RequestID, "Request ID")
+            </div>
+            <div class="input-control text">
+                @Html.TextBoxFor(m => m.RequestID, new { @readonly = true })
+            </div>
+            <div class="editor-label">
+                @Html.Label("Penggunaan Anggaran")
+            </div>
+            <div>
+                <label class="input-control radio">
+                    @{
+                        //int divisionID;
+                        //using (var db = Database.Open("ESKAPEDEContext"))
+                        //{
+                        //    string query = String.Format("select a.DivisionID from skpd.vwUserProfile a " +
+                        //                                "where a.Username='{0}'", User.Identity.Name);
+                        //    divisionID = db.QueryValue(query);
+                        //}
+                        string tiket = Request.QueryString["tiket"];
+                        string QueryStringModuleDecrypt = QueryStringModule.Decrypt(tiket);
+                        System.Collections.Specialized.NameValueCollection NameValue = HttpUtility.ParseQueryString(QueryStringModuleDecrypt);
+                        var RequestID = NameValue["RequestID"];
+                        var UserName = NameValue["UserName"];
+                        int UnitID;
+                        using (var db = new skpd.Models.ESKAPEDEContext())
+                        {
+                            UnitID = db.vwPositionInPrograms.Where(a => a.fullname == UserName).Select(a => a.UnitID).FirstOrDefault();
+                        }
+                    }
+                    <input type="radio" name="sendirilain" value="@UnitID.ToString()" checked="checked" />
+                    <span class="helper">Divisi Sendiri</span>
+                </label><br />
+                <label class="input-control radio" onclick="">
+                    <input type="radio" name="sendirilain" value='2' />
+                    <span class="helper">Divisi Lain</span>
+                </label>
+            </div>
+            <div id="division">
+                <div class="editor-label">
+                    Mata Anggaran Divisi
+                </div>
+                <div class="input-control text">
+                    <select id="UnitID" name="UnitID" required="required">
+                    </select>
+                </div>
+            </div>
+            <div id="budget">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.ProgramID, "Program Mata Anggaran")
+                </div>
+                <div class="input-control text">
+                    <select id="ProgramID" name="ProgramID" required="required">
+                    </select>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <input type="submit" value="Selesai" />
+                @*@Html.ActionLink("Pergunakan", "RequestInProgram", new { RequestID = Model.RequestID }, new { @class = "button bg-color-blue" })*@
+            </div>
+        </fieldset>
+}
+<div id="ajaxLoader" style="display: none">
+</div>
+@*<div>
+    @{Html.RenderPartial("RequestUsingBudget", new ViewDataDictionary());}
+</div>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        UsingBudget();
+
+        $("input:radio").change(function () {
+            $("#ajaxLoader").show();
+            UsingBudget();
+        });
+
+        function UsingBudget()
+        {
+            var x = $("input:radio[name=sendirilain]:checked").val();
+            if(x!=2)
+            {
+                GetDivision(x);
+                $('#division').hide();
+                $('#budget').show();
+               
+            }
+            else
+            {
+                GetDivision(x);
+                $('#budget').hide();
+                $('#division').show();
+            }
+        }
+
+        function GetDivision(radiovalue) {
+            var url = "@Url.Action("GetDivision", "Persetujuan")";
+            $.getJSON(url,
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.UnitID + "'>" + item.UnitName + "</option>";
+                    });
+                    $("#UnitID").html(items);
+                    if(radiovalue!=2)$("#UnitID").val(radiovalue);
+                    GetProgramDivision();
+                });
+        };
+
+        function GetProgramDivision() {
+            var DivisionID = $("#UnitID").val();
+            var url = "@Url.Action("GetProgramDivision", "Persetujuan")";
+            $.getJSON(url,{id: DivisionID},
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.ProgramID + "'>" + item.ProgramName + "</option>";
+                    });
+                    $("#ProgramID").html(items);
+                    $("#ajaxLoader").hide();
+                });
+                
+        };
+    });
+</script>

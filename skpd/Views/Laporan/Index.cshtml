@@ -1,0 +1,63 @@
+﻿@model skpd.DTO.RangeReleaseReport
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Laporan</h2>
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+<div class="bg-color-blueLight">
+    @using (Html.BeginForm())
+    {
+        <table class="bordered">
+            <thead>
+                <tr class="bg-color-blueLight">
+                    <th class="text-center">Dari Tanggal</th>
+                    <th class="text-center">Sampai Tanggal</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="input-control text span4">
+                        @Html.TextBoxFor(model => model.Start, new { @readonly = true })
+                        @Html.ValidationMessageFor(model => model.Start)</td>
+                    <td class="input-control text span4">
+                        @Html.TextBoxFor(model => model.From, new { @readonly = true })
+                        @Html.ValidationMessageFor(model => model.From)</td>
+                    <td class="input-control text place-top">
+                        <button class="big bg-color-green" type="submit">
+                            Lihat <i class="icon-grid-view icon-large"></i>
+                        </button>
+                    </td>
+                </tr>
+        </tbody>
+        </table>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Start").datepicker({
+            showOn: "button",
+            buttonImage: "Metro/images/misc/tear_off_calendar.png",
+            buttonImageOnly: true,
+            dateFormat: "dd MM yy",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#From").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#From").datepicker({
+            showOn: "button",
+            buttonImage: "Metro/images/misc/tear_off_calendar.png",
+            buttonImageOnly: true,
+            dateFormat: "dd MM yy",
+            changeMonth: true,
+            numberOfMonths: 1,
+            maxDate: "+1m",
+            onClose: function (selectedDate) {
+                $("#Start").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+    });
+</script>

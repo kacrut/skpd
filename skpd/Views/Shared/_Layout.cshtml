@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <meta name="description" content="pengajuan skpd inhealth">
+    <meta name="author" content="irfan.kacrut">
+    <title>@ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/Content/Metro/css")
+    @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
+
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryui")
+    @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
+    @System.Web.Optimization.Scripts.Render("~/bundles/Metro/js")
+</head>
+<body class="modern-ui" onload="prettyPrint()">
+    <div class="page">
+        @{Html.RenderPartial("_LogOnPartial");}
+        @{Html.RenderPartial("_Menu");}
+        <div class="page-region">
+            <div class="page-region-content ">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="nav-bar">
+            <div class="nav-bar-inner padding10">
+                <span class="element">
+                        &copy; @DateTime.Now.Date.Year by PT Asuransi Jiwa InHealth Indonesia
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

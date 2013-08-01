@@ -1,0 +1,118 @@
+﻿@model skpd.Models.RequestRelease
+@{
+    Layout = "~/Views/Shared/_LayoutEmail.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print</title>
+</head>
+<body>
+    <div>
+        <div style="text-align:center">
+            Surat Perjalanan Dinas<br />
+			No @Html.DisplayFor(model => model.RequestID)/SPD/@Model.PositionCountryID/@Model.FlagCreatedDate.Month@Model.FlagCreatedDate.Year<br /><br /><br />
+        </div>
+        <table class="bordered" style="table-layout:fixed">
+			<tbody>
+				<tr style="height:50px;">
+					<td>
+						1. Nama dan jabatan</td>
+					<td style="word-wrap: break-word">
+                        @Html.DisplayFor(model => model.Name) - ( @Model.PositionName )
+					</td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						2. Maksud perjalanan dinas
+                    </td>
+					<td style="word-wrap: break-word">
+						    @Html.DisplayFor(model => model.EventName)
+                    </td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						3. Moda transportasi
+                    </td>
+					<td style="word-wrap: break-word">
+                        <ul style="padding-left: 0; margin-left: 0;">
+						@{
+                            using (skpd.Models.ESKAPEDEContext db = new skpd.Models.ESKAPEDEContext())
+                            {
+                                IEnumerable<skpd.Models.RequestInTransport> x = db.RequestInTransports.Include("Transport").Where(a => a.RequestID == Model.RequestID);
+                                int i = 1;
+                                int count = x.Count();
+                                
+                                foreach (var item in x)
+                                {
+                                    
+                                    i++;
+                                    if(count > i)
+                                    {
+                                        <li style="display:inline;">
+                                            @Html.DisplayFor(modelItem => item.Transport.TransportName), &nbsp;
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li style="display:inline;">
+                                            @Html.DisplayFor(modelItem => item.Transport.TransportName)
+                                        </li>
+                                    }
+                                }
+                            }
+                        }
+                        </ul>
+                    </td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						4. Perjalanan</td>
+					<td style="word-wrap: break-word">
+						@Html.DisplayFor(model => model.FromCountryName) - @Model.ToCountryName</td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						5. a. Lamanya perjalanan dinas</td>
+					<td style="word-wrap: break-word">
+						    @Html.DisplayFor(model => model.Days) Hari</td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						&nbsp;&nbsp;&nbsp; b. Tanggal berangkat</td>
+					<td style="word-wrap: break-word">
+						    @Html.DisplayFor(model => model.StartDate)</td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						&nbsp;&nbsp;&nbsp; c. Tanggal kembali</td>
+					<td style="word-wrap: break-word">
+						    @Html.DisplayFor(model => model.EndDate)</td>
+				</tr>
+				<tr style="height:50px;">
+					<td>
+						6. Pembebanan Anggaran</td>
+					<td style="word-wrap: break-word">
+						    @Html.DisplayFor(model => model.ProgramID) - @Html.DisplayFor(model => model.ProgramName)</td>
+				</tr>
+			</tbody>
+		</table><br /><br /><br />
+        <div style="text-align:right">
+            Dikeluarkan di  :   Jakarta<br />
+            Pada tanggal    :   @Html.DisplayFor(model => model.FlagCreatedDate)<br /><br />
+            Di Setujui      :   @Html.DisplayFor(model => model.SignName)
+            @*Pejabat yang berwenang<br />
+            <img src="@Url.Content("~/Metro/images/signature/pudjianto.png")" width="170" height="100"/><br />
+            <p class="place-right">
+                
+                Pudjianto<br />
+                _______________________<br />
+                Direktur Keuangan
+            </p>*@
+        </div>
+    </div>
+</body>
+</html>

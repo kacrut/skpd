@@ -1,0 +1,344 @@
+﻿@model skpd.Models.Request
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pengajuan Perjalanan Dinas</h2>
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+<div>
+    @Html.ValidationSummary(true, "Gagal Kirim Pengajuan. Silahkan perbaiki error dibawah ini :")
+</div>
+<div class="bg-color-blueLight">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <fieldset>
+                <legend>Keberangkatan</legend>
+                <img src=@Url.Content("~/Metro/images/misc/airplane_take_off.png") />
+                <div id="FromRegion">
+                    <div class="editor-label">
+                        Area
+                    </div>
+                    <div class="input-control text span6">
+                        <select id="FromRegionID" name="FromRegionID" required="required">
+                        </select>
+                    </div>
+                </div>
+                <div id="FromCountry">
+                    <div class="editor-label">
+                        Berangkat dari
+                    </div>
+                    <div class="input-control text span6">
+                        <select id="FromCountryID" name="FromCountryID" required="required">
+                        </select>
+                    </div>
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.StartDate, "Dari tanggal")
+                </div>
+                <div class="input-control text span6">
+                    @Html.TextBoxFor(model => model.StartDate, new { @readonly = true })
+                    @Html.ValidationMessageFor(model => model.StartDate)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Perjalanan Dinas Ke</legend>
+                <img src=@Url.Content("~/Metro/images/misc/airplane_landing.png") />
+                <div id="ToRegion">
+                    <div class="editor-label">
+                        Area
+                    </div>
+                    <div class="input-control text span6">
+                        <select id="ToRegionID" name="ToRegionID" required="required">
+                        </select>
+                    </div>
+                </div>
+                <div id="ToCountry">
+                    <div class="editor-label">
+                         Tujuan
+                    </div>
+                    <div class="input-control text span6">
+                        <select id="ToCountryID" name="ToCountryID" required="required">
+                        </select>
+                    </div>
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.EndDate, "Sampai tanggal")
+                </div>
+                <div class="input-control text span6">
+                    @Html.TextBoxFor(model => model.EndDate, new { @readonly = true })
+                    @Html.ValidationMessageFor(model => model.EndDate)
+                </div>
+             </fieldset>
+             <fieldset>
+                <legend>Transportasi</legend>
+                <div>
+                    @{
+                        using (skpd.Models.ESKAPEDEContext db = new skpd.Models.ESKAPEDEContext())
+                        {
+                            IEnumerable<skpd.Models.Transport> x = db.Transports.OrderBy(a => a.TransportName);
+                            foreach (var o in x)
+                            {
+                                {
+                                    var optionValue = o.TransportID;
+                                }
+                                <label class="input-control checkbox" for="@o.TransportID">
+                                    <input type="checkbox" 
+                                                id="@o.TransportID" value="@o.TransportID"
+                                                name="trans"/>
+                                    <span class="helper">@o.TransportName &nbsp; @o.Description</span>
+                                </label><br />
+                            }
+                        }
+                    }
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Kegiatan</legend>
+                <div class="input-control textarea span8">
+                @Html.TextAreaFor(model => model.EventName)
+                @Html.ValidationMessageFor(model => model.EventName)
+            </div>
+            </fieldset>
+                @{
+                        using (skpd.Models.ESKAPEDEContext db = new skpd.Models.ESKAPEDEContext())
+                        {
+                            var x = db.vwUserProfiles.Where(a => a.Username == User.Identity.Name && a.CountryID == 1).Select(a => a.PositionTypeID).FirstOrDefault();
+                            int UnitID = db.vwPositionInPrograms.Where(a => a.fullname == User.Identity.Name).Select(a => a.UnitID).FirstOrDefault();
+                            if (x == 3 || x == 12)
+                            {
+                                <fieldset>
+                                    <legend></legend>
+                                    <div class="editor-label">
+                                        Penggunaan Anggaran
+                                    </div>
+                                <div>
+                                    <label class="input-control radio">
+                                        <input type="radio" name="sendirilain" value="@UnitID.ToString()" checked="checked" />
+                                        <span class="helper">Divisi Sendiri</span>
+                                    </label><br />
+                                    <label class="input-control radio" onclick="">
+                                        <input type="radio" name="sendirilain" value='2' />
+                                        <span class="helper">Divisi Lain</span>
+                                    </label>
+                                </div>
+                                <div id="division">
+                                    <div class="editor-label">
+                                        Mata Anggaran Divisi
+                                    </div>
+                                    <div class="input-control text">
+                                        <select id="UnitID" name="UnitID" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="budget">
+                                    <div class="editor-label">
+                                        Program Mata Anggaran"
+                                    </div>
+                                    <div class="input-control text">
+                                        <select id="ProgramID" name="ProgramID" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        }
+                    }
+                }
+            <p>
+                <input type="submit" value="Create" onclick="return checkForm(this);"/>
+            </p>
+        </fieldset>
+    }
+</div>
+<div id="ajaxLoader" style="display:none">
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#StartDate").val("");
+        $("#EndDate").val("");
+        $('#EventName').live("cut copy paste",function(e) {
+              e.preventDefault();
+          });
+
+        GetFromRegion();
+        GetToRegion();
+        UsingBudget();
+
+        $("input:radio").change(function () {
+            $("#ajaxLoader").show();
+            UsingBudget();
+        });
+
+        function UsingBudget()
+        {
+            var x = $("input:radio[name=sendirilain]:checked").val();
+            if(x!=2)
+            {
+                GetDivision(x);
+                $('#division').hide();
+                $('#budget').show();
+               
+            }
+            else
+            {
+                GetDivision(x);
+                $('#budget').hide();
+                $('#division').show();
+            }
+        }
+
+        function GetDivision(radiovalue) {
+            var url = "@Url.Action("GetDivision", "Persetujuan")";
+            $.getJSON(url,
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.UnitID + "'>" + item.UnitName + "</option>";
+                    });
+                    $("#UnitID").html(items);
+                    if(radiovalue!=2)$("#UnitID").val(radiovalue);
+                    GetProgramDivision();
+                });
+        };
+
+        function GetProgramDivision() {
+            var DivisionID = $("#UnitID").val();
+            var url = "@Url.Action("GetProgramDivision", "Persetujuan")";
+            $.getJSON(url,{id: DivisionID},
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.ProgramID + "'>" + item.ProgramName + "</option>";
+                    });
+                    $("#ProgramID").html(items);
+                    $("#ajaxLoader").hide();
+                });
+                
+        };
+
+        function GetDestination() {
+            var x = $('input:radio[name=LuarDalam]:checked').val();
+            $.getJSON("Pengajuan/GetDestination/" + x,
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.Name + "'>" + item.Name + "</option>";
+                    });
+                    $("#Destination").html(items);
+                    $("#ajaxLoader").hide();
+                });
+        };
+        $("#StartDate").datepicker({
+            minDate: "-3",
+            showOn: "button",
+            buttonImage: "Metro/images/misc/tear_off_calendar.png",
+            buttonImageOnly: true,
+            dateFormat: "dd MM yy",
+            defaultDate: "1",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#EndDate").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#EndDate").datepicker({
+            showOn: "button",
+            buttonImage: "Metro/images/misc/tear_off_calendar.png",
+            buttonImageOnly: true,
+            dateFormat: "dd MM yy",
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#StartDate").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+
+        $("#ToRegionID").change(function () {
+            $("#ajaxLoader").show();
+            GetToCountry();
+        });
+         $("#FromRegionID").change(function () {
+            $("#ajaxLoader").show();
+            GetFromCountry();
+        });
+
+//        $("input:radio").change(function () {
+//            $("#ajaxLoader").show();
+//            GetCountry();
+//        });
+
+        function GetToRegion() {
+            var url = "@Url.Action("GetRegion", "Pengajuan")";
+            $.getJSON(url,
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.RegionID + "'>" + item.RegionName + "</option>";
+                    });
+                    $("#ToRegionID").html(items);
+                    console.log($("#ToRegionID").html(items));
+                    GetToCountry();
+                });
+        };
+
+        function GetToCountry() {
+            var regionID = $("#ToRegionID").val();
+            var url = "@Url.Action("GetCountry", "Pengajuan")";
+            $.getJSON(url,{RegionID: regionID},
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.CountryID + "'>" + item.CountryName + "</option>";
+                    });
+                    $("#ToCountryID").html(items);
+                    $("#ajaxLoader").hide();
+                });
+        };
+
+        function GetFromRegion() {
+            var url = "@Url.Action("GetRegion", "Pengajuan")";
+            $.getJSON(url,
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.RegionID + "'>" + item.RegionName + "</option>";
+                    });
+                    $("#FromRegionID").html(items);
+                    GetFromCountry();
+                });
+       };
+
+        function GetFromCountry() {
+            console.log($("#FromRegionID").val());
+            var regionID = $("#FromRegionID").val();
+            var url = "@Url.Action("GetCountry", "Pengajuan")";
+            $.getJSON(url,{RegionID: regionID},
+                function (data) {
+                    var items;
+                    $.each(data, function (i, item) {
+                        items += "<option value='" + item.CountryID + "'>" + item.CountryName + "</option>";
+                    });
+                    $("#FromCountryID").html(items);
+                    $("#ajaxLoader").hide();
+                });
+        };
+
+        //frm is the form element
+        function checkForm(frm) {
+            var destCount = frm.elements['trans'].length;
+            var destSel = false;
+            for (i = 0; i < destCount; i++) {
+                if (frm.elements['trans'][i].checked) {
+                    destSel = true;
+                    break;
+                }
+            }
+
+            if (!destSel) {
+                alert('Select one or more destinations');
+            }
+            return destSel;
+        }
+    });
+</script>
